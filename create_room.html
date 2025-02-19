@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Webex Room</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Create a New Webex Room</h1>
+
+        <form method="POST">
+            <label for="room_title">Enter Room Title:</label>
+            <input type="text" id="room_title" name="room_title" placeholder="Room name" required>
+            <button type="submit">📍 Create Room</button>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <a href="{{ url_for('menu', access_token=access_token) }}"><button>🔙 Back to Menu</button></a>
+    </div>
+</body>
+</html>
