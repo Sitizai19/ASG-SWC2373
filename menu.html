@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webex Troubleshooting Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='menu.gif') }}" alt="menu logo" class="logo">
+        <h1>Webex Troubleshooting Menu</h1>
+            <a href="{{ url_for('test_connection', access_token=access_token) }}"><button>💥 Test Connection</button></a>
+            <a href="{{ url_for('user_info', access_token=access_token) }}"><button>🔹 Option 1: 🤗 Display User Info</button></a>
+            <a href="{{ url_for('rooms', access_token=access_token) }}"><button>🔹 Option 2: 🚪 List of Rooms</button></a>
+            <a href="{{ url_for('create_room', access_token=access_token) }}"><button>🔹 Option 3: 📝 Create a Room</button></a>
+            <a href="{{ url_for('send_message', access_token=access_token) }}"><button>🔹 Option 4: 🗨️💬 Send Message to a Room</button></a>
+            <a href="{{ url_for('logout', access_token=access_token) }}"><button>🔹 Log Out</button></a>
+
+    </div>
+</body>
+</html>
