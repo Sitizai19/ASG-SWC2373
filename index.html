@@ -1,0 +1,22 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Enter Webex Token</title> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') 
+}}"> 
+</head> 
+<body> 
+    <div class="container"> 
+        <img src="{{ url_for('static', filename='index.gif') }}" alt="Index logo" class="logo">
+        <h2>Enter Webex Access Token</h2> 
+        <form method="POST" action="/"> 
+            <label for="access_token">Access Token:</label> 
+            <input type="text" id="access_token" name="access_token" 
+placeholder="Paste your token here" required> 
+            <button type="submit">📥 Submit</button> 
+        </form> 
+    </div> 
+</body> 
+</html>
