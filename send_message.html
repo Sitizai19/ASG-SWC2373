@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Message</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>📩 Send Message to a Room</h2>
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Form to send message -->
+    <form method="POST">
+        <label for="room_id">Select a Room:</label>
+        <select name="room_id" required>
+            {% for room in rooms %}
+                <option value="{{ room.id }}">{{ room.title }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="message">Message:</label>
+        <textarea name="message" rows="4" required></textarea>
+        <button type="submit">📤 Send Message</button>
+    </div>
+    </form>
+    <br>
+    <a href="{{ url_for('menu') }}"><button type="menu">🔙 Back to Menu</button>
+</body>
+</html>
