@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Webex Connection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        
+
+
+        <h1>Test Webex Connection</h1>
+
+        {% if success %}
+            <img src="{{ url_for('static', filename='connect.gif') }}" alt="Congratulations" class="logo"> 
+            <p style="color: green;">✅ Connection Successful!</p>
+            
+        {% else %}
+            <img src="{{ url_for('static', filename='connectfail.gif') }}" alt="connectfail" class="logo"> 
+            <p style="color: red;">❌ Connection Failed. Please check your token.</p>
+        {% endif %}
+
+        <a href="{{ url_for('menu', access_token=access_token) }}"><button>🔙 Back to Menu</button></a>
+    </div>
+</body>
+</html>
