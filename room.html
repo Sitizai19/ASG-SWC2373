@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webex Rooms</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>📌 Webex Rooms</h2>
+
+        <!-- Flash Messages (Success or Error) -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Display List of Rooms in Table -->
+        {% if rooms %}
+            <table class="rooms-table">
+                <thead>
+                    <tr>
+                        <th>Room ID</th>
+                        <th>Title</th>
+                        <th>Date Created</th>
+                        <th>Last Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for room in rooms %}
+                        <tr>
+                            <td>{{ room.id }}</td>
+                            <td>{{ room.title }}</td>
+                            <td>{{ room.created | replace('T', ' ') | replace('Z', '') }}</td>
+                            <td>
+                                {% if room.lastActivity %}
+                                    {{ room.lastActivity | replace('T', ' ') | replace('Z', '') }}
+                                {% else %}
+                                    No activity yet
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-danger">❌ No rooms found.</p>
+        {% endif %}
+
+        <!-- Back to Menu Button -->
+        <a href="{{ url_for('menu') }}">
+            <button type="button">🔙 Back to Menu</button>
+        </a>
+
+
+</body>
+</html>
